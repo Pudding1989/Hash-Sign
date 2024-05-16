@@ -2,11 +2,10 @@
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
-<template>
-  <header>
-  </header>
+<template lang="pug">
+header/
 
-  <RouterView />
+router-view/
 </template>
 
 <style></style>
