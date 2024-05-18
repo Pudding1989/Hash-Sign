@@ -1,4 +1,9 @@
 <script setup>
+import sideBarList from '@/assets/sideBarList.js';
+
+// component
+import sideBarRecursive from '@/components/header/sideBarRecursive.vue';
+
 // 取得 sideBar dom 元素
 const sideBarRef = ref()
 const sideBarOpen = ref(false)
@@ -22,8 +27,12 @@ function closeSideBar(event) {
 
 <template lang="pug">
 header.flex.justify-end()
-  button.hamburger.flex(@click="sideBarOpen = !sideBarOpen")
+  button.hamburger.flex(@click.stop="sideBarOpen = !sideBarOpen")
     .bar(v-for="item in 3")
+
+  transition(name="slide")
+    nav.flex(v-if="sideBarOpen",ref="sideBarRef")
+      side-bar-recursive.pr-2(:list="sideBarList")/
 </template>
 
 <style lang="scss" scoped>
