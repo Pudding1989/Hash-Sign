@@ -1,14 +1,24 @@
 <script setup>
+const animationEnum = Object.freeze({
+  left: 'slide-right',
+  goal: 'slide-goal',
+})
+
+const ballAnimation = ref(animationEnum['left'])
 </script>
 
 <template lang="pug">
 main.flex.items-center
+  .tool-bar
+    button(@click="ballAnimation = animationEnum['left']" :disabled="ballAnimation == animationEnum['left']") ⚽️&ensp;往左移動
+    button(@click="ballAnimation = animationEnum['goal']" :disabled="ballAnimation == animationEnum['goal']") ⚽️&ensp;往指定位置移動
+    button(@click="ballAnimation = ''" :disabled="!ballAnimation") ⚽️&ensp;恢復原位
 
     //- 九宮格區域
   .hash-sign-area.grid
     .box(v-for="item, in 9" :class="{blink: [3,5, 9].includes(item)}")
     //- 球
-    .ball.slide-right(v-for="item in 4" :class="`num-${item}`")
+    .ball(v-for="item in 4" :class="`num-${item}`,ballAnimation")
 </template>
 
 
@@ -125,4 +135,13 @@ main {
     top: calc(5 / 6 * 100%);
     left: calc(5 / 6 * 100%);
   }
+
+  transition: top var(--slide-time) ease-in-out,
+  left var(--slide-time) ease-in-out;
+
+  &.slide-goal {
+    top: calc(3 / 6* 100%);
+    left: calc(3 / 6* 100%);
+  }
+}
 </style>
