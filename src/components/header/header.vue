@@ -1,8 +1,12 @@
 <script setup>
 import sideBarList from '@/assets/sideBarList.js';
+import { useSideBarStore } from '@/stores/sidebar.js';
 
 // component
 import sideBarRecursive from '@/components/header/sideBarRecursive.vue';
+
+// store 實例化
+const sideBarStore = useSideBarStore()
 
 // 取得 sideBar dom 元素
 const sideBarRef = ref()
@@ -14,6 +18,9 @@ watch(
   () => {
     if (sideBarOpen.value) document.addEventListener('click', closeSideBar)
   })
+
+onMounted(() => {
+  sideBarStore.getSideBarList()
 
 // 檢查點擊元素是否包還在 sideＢar 當中
 function closeSideBar(event) {
@@ -32,7 +39,7 @@ header.flex.justify-end()
 
   transition(name="slide")
     nav.flex(v-if="sideBarOpen",ref="sideBarRef")
-      side-bar-recursive.pr-2(:list="sideBarList")/
+      side-bar-recursive.pr-2(:list="sideBarStore.sidebarList")/
 </template>
 
 <style lang="scss" scoped>
@@ -83,16 +90,15 @@ nav {
   &.slide-enter-active {
     transition: right 0.35s ease-out;
   }
-  
+
   &.slide-enter-from,
   &.slide-leave-to {
     right: -100%;
   }
-  
+
   &.slide-enter-to,
   &.slide-leave-from {
     right: 0%;
   }
 }
-
 </style>
