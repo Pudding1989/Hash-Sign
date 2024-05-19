@@ -31,12 +31,33 @@ export const useSideBarStore = defineStore(
       return dataObj
     }
 
+    function setOpen(selectKey, dataObj) {
+      for (let item of dataObj) {
+
+        switch (true) {
+          case item.key === selectKey:
+            item.isOpen = true;
+            return true;
+          case 'children' in item && setOpen(selectKey, item.children):
+
+            item.isOpen = true;
+            return true;
+
+          default:
+            item.isOpen = false;
+            break;
+        }
+      }
+      return false;
+    }
+
     // 處理每一層只能有一個項目被展開
     function toggleOpen(selectKey, selectLayer) {
       for (let item of selectLayer) {
         switch (item.key === selectKey) {
           case true:
             item.isOpen = true
+            localStorage.setItem('isOpen', item.key)
             break;
 
           case false:
@@ -48,5 +69,5 @@ export const useSideBarStore = defineStore(
       }
     }
 
-    return { sidebarList, getSideBarList, toggleOpen }
+    return { sidebarList, getSideBarList, setOpen, toggleOpen }
   })

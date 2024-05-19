@@ -22,6 +22,11 @@ watch(
 onMounted(() => {
   sideBarStore.getSideBarList()
 
+  // 從 localStorage 取得 sideBar 開啟狀態
+  const selectKey = localStorage.getItem('isOpen')
+  sideBarStore.setOpen(selectKey,sideBarStore.sidebarList)
+})
+
 // 檢查點擊元素是否包還在 sideＢar 當中
 function closeSideBar(event) {
   if (sideBarRef.value.contains(event.target)) return
