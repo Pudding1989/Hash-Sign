@@ -75,9 +75,9 @@ header {
 
 nav {
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 0%;
-
+  right: 0%;
 
   min-width: 12rem;
   height: 100vh;
