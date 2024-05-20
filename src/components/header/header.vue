@@ -1,5 +1,4 @@
 <script setup>
-import sideBarList from '@/assets/sideBarList.js';
 import { useSideBarStore } from '@/stores/sidebar.js';
 
 // component
