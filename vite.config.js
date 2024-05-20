@@ -16,6 +16,8 @@ export default defineConfig({
   server: {
     host: true,
   },
+  // 設定路徑部署到 Github Pages
+  base: process.env.NODE_ENV === 'production' ? '/Hash-Sign/' : './',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
