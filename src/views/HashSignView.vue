@@ -43,11 +43,16 @@ main {
   padding: 10px;
   background-color: rgba(245, 245, 245, 0.80);
 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
   button {
     padding: 6px;
     border-radius: 4px;
     background-color: DeepSkyBlue;
     color: whitesmoke;
+    text-align: start;
 
     &:hover {
       background-color: SteelBlue;
@@ -58,8 +63,8 @@ main {
       color: white;
     }
 
-    &:nth-child(n+2) {
-      margin-left: 10px;
+    &:nth-last-child(n + 2) {
+      margin-bottom: 10px;
     }
   }
 }
