@@ -1,5 +1,5 @@
 <script setup>
-import { useSideBarStore } from '@/stores/sidebar.js';
+import { useSideBarStore } from '@/stores/sideBar.js';
 
 // component
 import sideBarRecursive from '@/components/header/sideBarRecursive.vue';
@@ -23,7 +23,7 @@ onMounted(() => {
 
   // 從 localStorage 取得 sideBar 開啟狀態
   const selectKey = localStorage.getItem('isOpen')
-  sideBarStore.setOpen(selectKey,sideBarStore.sidebarList)
+  sideBarStore.setOpen(selectKey, sideBarStore.sideBarList)
 })
 
 // 檢查點擊元素是否包還在 sideＢar 當中
@@ -43,7 +43,7 @@ header.flex.justify-end()
 
   transition(name="slide")
     nav.flex(v-if="sideBarOpen",ref="sideBarRef")
-      side-bar-recursive.pr-2(:list="sideBarStore.sidebarList")/
+      side-bar-recursive.pr-2(:list="sideBarStore.sideBarList")/
 </template>
 
 <style lang="scss" scoped>

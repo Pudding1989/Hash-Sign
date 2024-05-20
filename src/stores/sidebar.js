@@ -1,23 +1,23 @@
-import sideBarList from '@/assets/sideBarList';
+import sideBarData from '@/assets/sideBarList';
 import { defineStore } from 'pinia'
 
 
 export const useSideBarStore = defineStore(
   'sidebar',
   () => {
-    const sidebarList = reactive([])
+    const sideBarList = reactive([])
 
     function getSideBarList() {
-      let data = JSON.parse(JSON.stringify(sideBarList))
+      let data = JSON.parse(JSON.stringify(sideBarData))
 
       const result = traverseChild(data)
 
       // 清空
-      for (const key in sidebarList) {
-        delete sidebarList[key]
+      for (const key in sideBarList) {
+        delete sideBarList[key]
       }
 
-      Object.assign(sidebarList, result)
+      Object.assign(sideBarList, result)
       return result;
     }
 
@@ -69,5 +69,5 @@ export const useSideBarStore = defineStore(
       }
     }
 
-    return { sidebarList, getSideBarList, setOpen, toggleOpen }
+    return { sideBarList, getSideBarList, setOpen, toggleOpen }
   })

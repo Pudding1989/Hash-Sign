@@ -1,5 +1,5 @@
 <script setup>
-import { useSideBarStore } from '@/stores/sidebar.js';
+import { useSideBarStore } from '@/stores/sideBar.js';
 // component
 import sideBarRecursive from '@/components/header/sideBarRecursive.vue';
 
