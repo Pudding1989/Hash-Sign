@@ -55,7 +55,7 @@
       輸入指令將後端專案 clone至指定資料夾
 
       ```code
-      git clone https://github.com/Pudding1989/hash-sign.git
+      git clone https://github.com/Pudding1989/Hash-Sign.git
       ```
 
 2. 安裝專案使用的套件
