@@ -1,29 +1,102 @@
-# hash-sign
+# 九宮格動畫
 
-This template should help get you started developing with Vue 3 in Vite.
+![Vite](https://badges.aleen42.com/src/vitejs.svg)
 
-## Recommended IDE Setup
+手機版面 390 * 844px (Chrome: iphone 12 Pro 模擬器) 大小之下，依照指定提供的資料內容，製作一個有可收合側邊選單的展示頁面
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [x] 主頁面-側邊選單收合按鈕
+- [x] 主頁面-九宮格動畫
+- [x] 側邊選單
 
-## Customize configuration
+## 額外需求
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### 主頁面九宮格動畫
 
-## Project Setup
+  1. 請使用兩種以上的動畫執行方式，來繪製動畫
 
-```sh
-npm install
+     1. 對球本身設定 transform: translate CSS 屬性，球會根據自身相對位置來移動，實際效果請點擊「往左移動」
+     2. 對九宮格的容器採用 position: relative ，而球本身(為九宮格的容器的子元素)設定 position: absolute，藉由改變球的 top、left CSS 屬性，便可以相對於九宮格來設定位置，實際效果請點擊「⚽️往指定位置移動」
+  2. 四顆球同時朝同一個座標點移動
+     - 實際效果請點擊「⚽️往指定位置移動」
+  3. 請在效能考量下，設計可同時存在一百顆球、且指定飛行起終點的結構
+
+### 側邊選單
+
+  1. 另提供一個下拉選單，需包含所有種類。從下拉選單中選取任一項目時，等同點擊該項目
+     - 實際效果請點擊上方導航列切換至「下拉選單」頁面，選取下拉選單
+  2. 請實作記憶功能，關閉分頁後再開啟，可以顯示上次選取的項目
+     - 採用 localStorage 實作，使用下拉選單或側邊選單選擇皆有記憶功能
+  3. 請在效能考量下，設計可收合、展開最多一百層的選單
+
+## 1.設定開發環境
+
+1. 建議將 Node.js 切換至 v20.9.0，其他版本可能無法執行
+
+   ```code
+   nvm install 20.9.0
+   ```
+
+   ```code
+   nvm use 20.9.0
+   ```
+
+## 2.啟動專案
+
+1. 安裝專案原始碼安裝至指定位置，你可以採取下列其中一種方法
+      1. 點選右上方綠色『Code』按鈕，選擇『Download ZIP』下載ZIP檔，並解壓縮至指定資料夾中
+
+      2. 開啟『終端機 Terminal.app』  
+       輸入指令，移動到指定資料夾位置  
+
+      ```code
+      cd 「後端專案資料夾路徑」 (資料夾名稱間的空格要用「 / 」隔開)
+      ```
+
+      輸入指令將後端專案 clone至指定資料夾
+
+      ```code
+      git clone https://github.com/Pudding1989/hash-sign.git
+      ```
+
+2. 安裝專案使用的套件
+
+   ```code
+    npm install
+    ```
+
+3. 輸入執行指令，啟動專案
+
+```text
+  npm run dev
 ```
 
-### Compile and Hot-Reload for Development
+- 當終端機顯示下列訊息，表示已成功開啟應用程式伺服器
 
-```sh
-npm run dev
-```
+  ```text
+  VITE v5.2.xx ready in xxx ms:
+    - Local:   http://localhost:5173/
+    - Network: http://192.168.0.1:5173/
+  ```
 
-### Compile and Minify for Production
+## 3.開發工具
 
-```sh
-npm run build
-```
+開發環境
+
+- Node.js v20.19.0
+
+- Vite: 5.2.8
+
+前端框架
+
+- Vue: 3.4.21
+
+  - Vue Router: 4.3.0
+  - unplugin-auto-import: 0.17.6
+
+前端套件
+
+- Pug: 3.0.2
+
+- Sass: 1.53
+
+- Tailwind CSS: 3.4.3
