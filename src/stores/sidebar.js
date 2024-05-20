@@ -5,6 +5,8 @@ import { defineStore } from 'pinia'
 export const useSideBarStore = defineStore(
   'sidebar',
   () => {
+    // 供下拉選單使用
+    const selectOption = ref('')
     const sideBarList = reactive([])
 
     function getSideBarList() {
@@ -18,6 +20,12 @@ export const useSideBarStore = defineStore(
       }
 
       Object.assign(sideBarList, result)
+
+      // 從 localStorage 取得 sideBar 開啟狀態
+      const selectKey = localStorage.getItem('isOpen') || ''
+      selectOption.value = selectKey
+      setOpen(selectKey, sideBarList)
+  
       return result;
     }
 
@@ -57,6 +65,8 @@ export const useSideBarStore = defineStore(
         switch (item.key === selectKey) {
           case true:
             item.isOpen = true
+            // 些改下拉選單選項
+            selectOption.value = item.key
             localStorage.setItem('isOpen', item.key)
             break;
 
@@ -69,5 +79,5 @@ export const useSideBarStore = defineStore(
       }
     }
 
-    return { sideBarList, getSideBarList, setOpen, toggleOpen }
+    return { sideBarList, selectOption, getSideBarList, setOpen, toggleOpen }
   })

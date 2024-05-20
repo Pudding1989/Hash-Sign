@@ -20,10 +20,6 @@ watch(
 
 onMounted(() => {
   sideBarStore.getSideBarList()
-
-  // 從 localStorage 取得 sideBar 開啟狀態
-  const selectKey = localStorage.getItem('isOpen')
-  sideBarStore.setOpen(selectKey, sideBarStore.sideBarList)
 })
 
 // 檢查點擊元素是否包還在 sideＢar 當中
@@ -37,7 +33,10 @@ function closeSideBar(event) {
 </script>
 
 <template lang="pug">
-header.flex.justify-end()
+header.flex.justify-between()
+  .link-list
+    router-link(:to="{name: 'home'}") 井字動畫
+    router-link(:to="{name: 'drop-down'}") 下拉選單
   button.hamburger.flex(@click.stop="sideBarOpen = !sideBarOpen")
     .bar(v-for="item in 3")
 
@@ -50,6 +49,19 @@ header.flex.justify-end()
 header {
   position: relative;
   padding: 8px;
+}
+
+.link-list {
+  a {
+    &:nth-child(n+2) {
+      margin-left: 8px;
+    }
+
+    &.router-link-exact-active {
+      color: SteelBlue;
+
+    }
+  }
 }
 
 .hamburger {

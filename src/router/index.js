@@ -9,6 +9,11 @@ const router = createRouter({
       name: 'home',
       component: HashSignView
     },
+    {
+      path: '/drop-down',
+      name: 'drop-down',
+      component: () => import('@/views/DropDownView.vue')
+    },
   ]
 })
 
